@@ -144,18 +144,18 @@
         <h4><a href="property-detail.php">Royal Inn</a></h4>
         <p class="price">Price: $234,900</p>
         <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-        <a class="btn btn-primary" href="propertydetail.php">Ver Detalhes</a>
+        <a class="btn btn-primary" href="">Ver Detalhes</a>
       </div>
       @foreach($immobiles as $immobile)
       @if (count($immobile->images) < 1)
       <div class="properties">
             <div class="image-holder"><img style="width: 100%; height:140px;" src="/images/default.png" class="img-responsive" alt="properties"/>
-              <div class="status sold">{{$immobile->operation}}</div>
+              <div class="status sold">{{$immobile->operation->name}}</div>
             </div>
             <h4><a href="property-detail.php">{{$immobile->title}}</a></h4>
             <p class="price">Preco R${{$immobile->value}}</p>
             <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-            <a class="btn btn-primary" href="{{ route('home.show',$immobile->id) }}">Ver Detalhes</a>
+            <a class="btn btn-primary" href="">Ver Detalhes</a>
           </div>
       @endif
       @foreach($immobile->images as $image )
@@ -163,12 +163,12 @@
       @if ($loop->iteration == 1)
          <div class="properties">
             <div class="image-holder"><img style="width: 100%; height:140px;" src="{{$image->image_path}}" class="img-responsive" alt="properties"/>
-              <div class="status sold">{{$immobile->operation}}</div>
+              <div class="status sold">{{$immobile->operation->name}}</div>
             </div>
             <h4><a href="property-detail.php">{{$immobile->title}}</a></h4>
             <p class="price">Preco R${{$immobile->value}}</p>
             <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
-            <a class="btn btn-primary" href="{{ route('home.show',$immobile->id) }}">Ver Detalhes</a>
+            <a class="btn btn-primary" href="">Ver Detalhes</a>
           </div>
       @endif
       

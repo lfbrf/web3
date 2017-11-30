@@ -22,7 +22,7 @@
                 </a>
                  <ul>
                     <li><a data-toggle="modal" href="#category">Adicionar Operação</a></li>
-                    <li><a href="{{ route('immobile.create') }}">Adicionar Tipo</a></li>
+                    
                 </ul>
                
             </li>
