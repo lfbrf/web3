@@ -11,25 +11,22 @@
 |
 */ 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Auth::routes();
-Route::group(['middleware'=>'auth'], function () {
-	Route::get('permissions-all-users',['middleware'=>'check-permission:user|admin|superadmin','uses'=>'HomeController@allUsers']);
-	Route::get('permissions-admin-superadmin',['middleware'=>'check-permission:admin|superadmin','uses'=>'HomeController@adminSuperadmin']);
-	Route::get('permissions-superadmin',['middleware'=>'check-permission:superadmin','uses'=>'HomeController@superadmin']);
-		//Route::resource('home', ['middleware'=>'check-permission:admin|superadmin','uses'=>'
-		//HomeController']);
-	
-});
-Route::group(['middleware' => ['check-permission:admin']], function() {
-	Route::resource('articles','ArticleController');
-});
 
+Route::view('/about', 'about');
+Route::get('/buysalerent', 'HomeController@buysalerent')->name('buysalerent');
+Route::get('/welcome', 'HomeController@welcome')->name('welcome');
+  Route::get('/', 'HomeController@welcome')->name('welcome');
+Auth::routes(); 
+Route::get('/propertydetail', 'HomeController@propertydetail')->name('prop');
+Route::group(['prefix' => 'admin','middleware' => ['check-permission:admin']], function() {
+     Route::get('/','ImmobileController@index');
+	Route::post('immobile/image-upload/{immobileId}','ImmobileController@uploadImages');
+	Route::resource('immobile','ImmobileController');
+	Route::resource('operations','OperationsController');
+	Route::get('immobile-lists', ['as'=>'immobile-lists','uses'=>'ImmobileController@index']);
+});
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::resource('home','HomeController');
 Route::get('/home', 'HomeController@index')->name('home');
-
-//Route::resource('articles','ArticleController');
-	//Route::resource('articles', ['middleware'=>'check-permission:admin|superadmin','uses'=>'
-	//	ArticleController']);
+Route::get('/details', 'HomeController@details')->name('details');
